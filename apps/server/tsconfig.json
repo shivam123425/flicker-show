@@ -1,0 +1,14 @@
+{
+  "extends": "tsconfig/server.json",
+  "compilerOptions": {
+    "baseUrl": ".",
+    "rootDir": "./src",
+    "outDir": "./build",
+    "paths": {
+      "@routes/*": ["src/routes/*"],
+      "@routes": ["src/routes"],
+      "@models/*": ["models/*"],
+      "@models": ["models"]
+    }
+  }
+}

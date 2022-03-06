@@ -9,4 +9,8 @@ module.exports = {
     "@next/next/no-html-link-for-pages": "off",
     "react/jsx-key": "off",
   },
+  "env": {
+    "node": true,
+    "browser": true
+  }
 };
