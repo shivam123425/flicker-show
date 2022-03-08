@@ -16,7 +16,6 @@ model User {
   email        String    @unique @db.VarChar(255)
   password     String    @db.VarChar(255)
   createdAt    DateTime  @default(now())
-  noOfProfiles Int       @default(0) @db.SmallInt
   profiles     Profile[]
 
   @@index([id])
