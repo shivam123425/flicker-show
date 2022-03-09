@@ -11,22 +11,22 @@ datasource db {
 }
 
 model User {
-  id           Int       @id @default(autoincrement())
-  name         String    @db.VarChar(255)
-  email        String    @unique @db.VarChar(255)
-  password     String    @db.VarChar(255)
-  createdAt    DateTime  @default(now())
-  profiles     Profile[]
+  id        Int       @id @default(autoincrement())
+  name      String    @db.VarChar(255)
+  email     String    @unique @db.VarChar(255)
+  password  String    @db.VarChar(255)
+  createdAt DateTime  @default(now())
+  profiles  Profile[]
 
   @@index([id])
 }
 
 model Profile {
-  id     Int  @id @default(autoincrement())
-  name String @db.VarChar(255)
+  id     Int    @id @default(autoincrement())
+  name   String @db.VarChar(255)
   avatar String @db.Text
   userId Int
-  user   User @relation(fields: [userId], references: [id])
+  user   User   @relation(fields: [userId], references: [id])
 
   @@index([userId])
   @@index([id])
