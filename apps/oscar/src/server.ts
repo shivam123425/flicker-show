@@ -7,5 +7,5 @@ const app = express();
 const PORT = process.env.PORT;
 
 app.listen(PORT, () => {
-  console.log("Server is running at", PORT);
+  console.log("Oscar server is running at", PORT);
 });
