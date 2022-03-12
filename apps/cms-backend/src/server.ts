@@ -1,13 +1,16 @@
 import "dotenv/config";
 import express from "express";
+import { requireAuth } from "@skgittix/common";
+
 import { initialiseDB } from "./config/db";
 import { initialiseRedis } from "./config/redis";
 
-import { requireAuth } from "server/middlewares";
-import { DatabaseConnectionError } from "server/errors";
+import { Show } from "@models/Show";
 
 const app = express();
 const PORT = process.env.PORT;
+
+console.log(Show);
 
 (async () => {
   await initialiseDB();

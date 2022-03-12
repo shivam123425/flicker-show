@@ -1,7 +1,6 @@
 import "dotenv/config";
 import express from "express";
-import { requireAuth } from "server/middlewares";
-import { DatabaseConnectionError } from "server/errors";
+import { requireAuth } from "@skgittix/common"
 
 const app = express();
 const PORT = process.env.PORT;

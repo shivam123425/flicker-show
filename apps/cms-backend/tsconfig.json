@@ -1,13 +1,16 @@
 {
   "extends": "tsconfig/server.json",
+  "include": ["./src/**/*"],
   "compilerOptions": {
     "baseUrl": ".",
     "outDir": "./build",
+    "noEmit": true,
+    "target": "ES2017",
+    "lib": ["ES2017"],
+    "allowJs": true,
     "paths": {
-      "@routes/*": ["src/routes/*"],
-      "@routes": ["src/routes"],
-      "@models/*": ["models/*"],
-      "@models": ["models"]
+      "@models/*": ["src/models/*"],
+      "@models": ["src/models"]
     }
   }
 }
