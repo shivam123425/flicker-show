@@ -1,6 +1,6 @@
 import "dotenv/config";
 import express from "express";
-import { requireAuth } from "@skgittix/common";
+import { requireAuth } from "@shivam123425/express-common";
 import { testingAuth } from "@routes/auth";
 
 const app = express();

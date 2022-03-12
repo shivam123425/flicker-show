@@ -1,6 +1,6 @@
 import express from "express";
 import { body } from "express-validator";
-import { requireAuth, validateRequest } from "@skgittix/common";
+import { requireAuth, validateRequest } from "@shivam123425/express-common";
 import { createShow } from "@controllers/show.controller";
 
 const router = express.Router();

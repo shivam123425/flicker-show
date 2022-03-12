@@ -4,7 +4,7 @@ import "express-async-errors";
 import helmet from "helmet";
 import cors from "cors";
 import cookieSession from "cookie-session";
-import { errorHandler, NotFoundError, currentUser } from "@skgittix/common";
+import { errorHandler, NotFoundError, currentUser } from "@shivam123425/express-common";
 
 import { initialiseDB } from "./config/db";
 import { initialiseRedis } from "./config/redis";

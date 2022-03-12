@@ -1134,10 +1134,10 @@
   resolved "https://registry.yarnpkg.com/@rushstack/eslint-patch/-/eslint-patch-1.1.0.tgz#7f698254aadf921e48dda8c0a6b304026b8a9323"
   integrity sha512-JLo+Y592QzIE+q7Dl2pMUtt4q8SKYI5jDrZxrozEQxnGVOyYE+GWK9eLkwTaeN9DDctlaRAQ3TBmzZ1qdLE30A==
 
-"@skgittix/common@^1.0.11":
-  version "1.0.11"
-  resolved "https://registry.yarnpkg.com/@skgittix/common/-/common-1.0.11.tgz#0130ea32aee6da86d402502c1dc87e4c3060996b"
-  integrity sha512-vD0/r1bJoSD+VG9SgjFj4Qw/+UcWLJWUYLTTlXlliwhfU0qemUfdHD4mx2hfypQBB+VETNFlDjKiULwvTGipQQ==
+"@shivam123425/express-common@^0.0.4":
+  version "0.0.4"
+  resolved "https://registry.yarnpkg.com/@shivam123425/express-common/-/express-common-0.0.4.tgz#5196dda15d61983799e34c3bbeb9aa1b25298768"
+  integrity sha512-pzc2rwEyZDkh/cFXQ6QgApGwylPt4UER7s147gHekcCbzvj1n5nEsue7IfKjUL3TkU6DvDDo1edLaOvxSXNryg==
   dependencies:
     "@types/cookie-session" "^2.0.42"
     "@types/express" "^4.17.11"
