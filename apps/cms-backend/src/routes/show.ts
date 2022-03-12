@@ -5,11 +5,11 @@ import { createShow } from "@controllers/show.controller";
 
 const router = express.Router();
 
-// @route    POST /show/:showId
+// @route    POST /show
 // @desc     Create a new show
 // @access   Private
 router.post(
-  "/:showId",
+  "/",
   requireAuth,
   [
     body("name", "Please provide a name").isString().notEmpty(),

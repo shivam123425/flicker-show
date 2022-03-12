@@ -14,6 +14,7 @@ export const createShow = async (
     description,
     maturityRating,
     genres,
+    uploader: req.currentUser!.id,
   });
   await show.save();
   res.status(201).json(show);
