@@ -6,6 +6,12 @@ export async function initialiseDB() {
     throw new Error("DATABASE_URL not defined");
   }
   console.log("Initialising DB");
-  await mongoose.connect(dbURI);
+  await mongoose.connect(dbURI, {
+    retryWrites: true,
+    w: "majority",
+    readPreference: "secondaryPreferred",
+    maxStalenessSeconds: 90,
+    readConcernLevel: "majority",
+  });
   console.log("Successfully connected to the DB");
 }

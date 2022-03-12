@@ -8,6 +8,7 @@ import { initialiseDB } from "./config/db";
 import { initialiseRedis } from "./config/redis";
 
 import showRoutes from "@routes/show";
+import userRoutes from "@routes/user";
 
 const app = express();
 
@@ -23,6 +24,7 @@ app.use(
 app.use(currentUser);
 
 app.use("/show", showRoutes);
+app.use("/user", userRoutes);
 
 app.all("*", () => {
   throw new NotFoundError();
