@@ -3,7 +3,11 @@ import IORedis from "ioredis";
 let redis: IORedis.Redis | null = null;
 
 export async function initialiseRedis() {
-  redis = new IORedis(process.env.REDIS_URL!);
+  const redisURI = process.env.REDIS_URL;
+  if (!redisURI) {
+    throw new Error("REDIS_URL not defined");
+  }
+  redis = new IORedis();
   console.log("Successfully connected to redis");
 }
 

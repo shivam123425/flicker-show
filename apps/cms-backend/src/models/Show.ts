@@ -1,10 +1,10 @@
 import mongoose from "mongoose";
 
-interface ShowAttrs {
+export interface ShowAttrs {
   name: string;
   maturityRating: number;
-  description: string;
-  releasedDate: Date;
+  description?: string;
+  releaseDate: Date;
   genres: string[];
 }
 
@@ -30,11 +30,11 @@ const showSchema = new mongoose.Schema<ShowDoc, ShowModel>(
     description: {
       type: String,
     },
-    releasedDate: {
+    releaseDate: {
       type: Date,
       required: true,
     },
-    genres: [{ type: String }],
+    genres: [{ type: String, required: true }],
   },
   {
     timestamps: true,

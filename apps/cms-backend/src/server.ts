@@ -1,23 +1,43 @@
 import "dotenv/config";
 import express from "express";
-import { requireAuth } from "@skgittix/common";
+import "express-async-errors";
+import cookieSession from "cookie-session";
+import { errorHandler, NotFoundError, currentUser } from "@skgittix/common";
 
 import { initialiseDB } from "./config/db";
 import { initialiseRedis } from "./config/redis";
 
-import { Show } from "@models/Show";
+import showRoutes from "@routes/show";
 
 const app = express();
-const PORT = process.env.PORT;
 
-console.log(requireAuth);
-console.log(Show);
+app.use(express.json());
 
-(async () => {
+app.use(
+  cookieSession({
+    secure: true,
+    signed: false,
+  })
+);
+
+app.use(currentUser);
+
+app.use("/show", showRoutes);
+
+app.all("*", () => {
+  throw new NotFoundError();
+});
+
+app.use(errorHandler);
+
+const start = async () => {
   await initialiseDB();
   await initialiseRedis();
 
+  const PORT = process.env.PORT;
   app.listen(PORT, () => {
     console.log("CMS backend server is running at", PORT);
   });
-})();
+};
+
+start();
