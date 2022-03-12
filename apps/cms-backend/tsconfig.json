@@ -4,10 +4,6 @@
   "compilerOptions": {
     "baseUrl": ".",
     "outDir": "./build",
-    "noEmit": true,
-    "target": "ES2017",
-    "lib": ["ES2017"],
-    "allowJs": true,
     "paths": {
       "@models/*": ["src/models/*"],
       "@models": ["src/models"]

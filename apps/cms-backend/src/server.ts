@@ -10,6 +10,7 @@ import { Show } from "@models/Show";
 const app = express();
 const PORT = process.env.PORT;
 
+console.log(requireAuth);
 console.log(Show);
 
 (async () => {

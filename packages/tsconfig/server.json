@@ -4,7 +4,10 @@
   "extends": "./base.json",
   "compilerOptions": {
     "module": "commonjs",
-    "target": "es6",
+    "noEmit": true,
+    "target": "ES2017",
+    "lib": ["ES2017"],
+    "allowJs": true,
     "declaration": false,
     "declarationMap": false
   },
