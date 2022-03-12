@@ -1,6 +1,8 @@
 import "dotenv/config";
 import express from "express";
 import "express-async-errors";
+import helmet from "helmet";
+import cors from "cors";
 import cookieSession from "cookie-session";
 import { errorHandler, NotFoundError, currentUser } from "@skgittix/common";
 
@@ -10,7 +12,21 @@ import { initialiseRedis } from "./config/redis";
 import showRoutes from "@routes/show";
 import userRoutes from "@routes/user";
 
+const isNonProdEnv = process.env.NODE_ENV !== "production";
+
 const app = express();
+app.use(helmet());
+
+app.use(
+  cors({
+    origin: function (origin, callback) {
+      if (isNonProdEnv) {
+        return callback(null, true);
+      }
+      return callback(new Error("Not allowed by CORS"));
+    },
+  })
+);
 
 app.use(express.json());
 
