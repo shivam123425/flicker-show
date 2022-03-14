@@ -31,7 +31,7 @@ export const createShow = async (
   });
   await show.save();
   // Create a job for video and thumbnail processing
-  res.status(201).json(show);
+  res.status(201).json({ data: show });
 };
 
 export const getShowByShowId = async (
@@ -44,5 +44,5 @@ export const getShowByShowId = async (
   if (!show) {
     throw new NotFoundError();
   }
-  res.json(show);
+  res.json({ data: show });
 };
