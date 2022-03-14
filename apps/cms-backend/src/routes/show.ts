@@ -1,7 +1,11 @@
 import express from "express";
 import { body, param } from "express-validator";
 import { requireAuth, validateRequest } from "@shivam123425/express-common";
-import { createShow, getShowByShowId } from "@controllers/show.controller";
+import {
+  createShow,
+  getShowByShowId,
+  getShowOfLoggedInUser,
+} from "@controllers/show.controller";
 
 const router = express.Router();
 
@@ -22,6 +26,11 @@ router.post(
   validateRequest,
   createShow
 );
+
+// @route    GET /show/user
+// @desc     Get shows of the logged in user (Paginated)
+// @access   Private
+router.get("/user", requireAuth, getShowOfLoggedInUser);
 
 // @route    GET /show/:showId
 // @desc     Get a show by showId

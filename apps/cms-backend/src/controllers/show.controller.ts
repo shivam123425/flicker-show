@@ -46,3 +46,28 @@ export const getShowByShowId = async (
   }
   res.json({ data: show });
 };
+
+export const getShowOfLoggedInUser = async (
+  req: Request<{ page?: number; limit?: number }>,
+  res: Response
+) => {
+  const { id } = req.currentUser!;
+  const { page = 1, limit = 10 } = req.params;
+
+  const filter = { uploader: id };
+
+  const shows = await Show.find(filter)
+    .skip((page - 1) * limit)
+    .limit(limit)
+    .sort({ createdAt: -1 })
+    .lean();
+
+  const resPayload: { data: any[]; totalDocs?: number } = { data: shows };
+
+  if (page === 1) {
+    // Attach total pages for pagination
+    resPayload.totalDocs = await Show.countDocuments(filter);
+  }
+
+  res.json(resPayload);
+};

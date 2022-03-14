@@ -58,10 +58,7 @@ export const logoutUser = async (req: Request, res: Response) => {
 };
 
 export const getCurrentUser = async (req: Request, res: Response) => {
-  if (!req.currentUser) {
-    throw new NotAuthorizedError();
-  }
-  const { id } = req.currentUser;
+  const { id } = req.currentUser!;
   const user = await User.findOne({ _id: id }).lean();
   if (!user) {
     throw new BadRequestError("Invalid jwt token");
