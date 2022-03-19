@@ -1,7 +1,18 @@
-
+import { Auth } from "@components/Auth";
+import { Container } from "ui";
 
 export default function Login() {
   return (
-    <div className="text-3xl font-bold underline">Login</div>
+    <Container fullHeight>
+      <Container
+        perfectCenter
+        css={{
+          width: "450px",
+          height: "660px",
+        }}
+      >
+        <Auth />
+      </Container>
+    </Container>
   );
 }

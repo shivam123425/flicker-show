@@ -1,5 +1,9 @@
+html {
+  height: 100%;
+}
 
 body {
+  height: 100%;
   font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
@@ -7,4 +11,16 @@ body {
   color: #333;
   font-size: 16px;
   direction: ltr;
+}
+
+*,
+*::after,
+*::before {
+  box-sizing: border-box;
+  padding: 0;
+  margin: 0;
+}
+
+#__next {
+  height: 100%;
 }

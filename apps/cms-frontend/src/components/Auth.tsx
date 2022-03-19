@@ -1,15 +1,28 @@
-import React from "react";
-import { Button } from "ui";
+import { Box, Typography, Input, Button } from "ui";
 
-function Auth() {
+export function Auth() {
   return (
-    <div className="text-3xl font-bold underline">
-      Auth not logged in cms-frontend!!
-      <Button color="primary" block>
-        Sign in
-      </Button>
-    </div>
+    <Box
+      css={{
+        backgroundColor: "$dark",
+        padding: "1.5rem",
+        height: "100%",
+        color: "$white",
+      }}
+    >
+      <Typography gutterBottom>Sign In</Typography>
+      <form>
+        <Input type="text" block name="username" />
+        <Input
+          type="password"
+          block
+          name="password"
+          css={{ marginBottom: 16 }}
+        />
+        <Button color="primary" block type="submit" css={{ marginTop: 24 }}>
+          Sign In
+        </Button>
+      </form>
+    </Box>
   );
 }
-
-export default Auth;

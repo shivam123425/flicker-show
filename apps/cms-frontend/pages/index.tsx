@@ -1,5 +1,5 @@
 import { Button } from "ui";
-import Auth from "@components/Auth";
+import { Auth } from "@components/Auth";
 
 export default function CMSFrontend() {
   return (
