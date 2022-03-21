@@ -12,11 +12,13 @@ export function Auth() {
     >
       <Typography gutterBottom>Sign In</Typography>
       <form>
-        <Input type="text" block name="username" />
+        <Input type="email" block name="email" label="Email" id="email" />
         <Input
           type="password"
           block
+          id="password"
           name="password"
+          label="Password"
           css={{ marginBottom: 16 }}
         />
         <Button color="primary" block type="submit" css={{ marginTop: 24 }}>

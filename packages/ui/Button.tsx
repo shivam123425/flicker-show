@@ -6,7 +6,7 @@ export const Button = styled("button", {
   borderRadius: 4,
   cursor: "pointer",
   fontSize: 16,
-  padding: 10,
+  padding: 16,
   fontWeight: 700,
   textAlign: "center",
   fontFamily: "inherit",
@@ -25,7 +25,7 @@ export const Button = styled("button", {
       },
     },
   },
-  "@bp1": {
-    padding: 16,
+  "@sm": {
+    padding: 10,
   },
 });

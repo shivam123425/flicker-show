@@ -9,6 +9,10 @@ export default function Login() {
         css={{
           width: "450px",
           height: "660px",
+          "@sm": {
+            width: "100vw",
+            height: "100vh"
+          }
         }}
       >
         <Auth />

@@ -1,15 +1,14 @@
 import { styled } from "./stitches.config";
 
 export const InputField = styled("input", {
-  "&[type=text],&[type=password]": {
+  "&[type=text],&[type=password],&[type=email]": {
     backgroundColor: "$grayDark",
     color: "$white",
     borderRadius: 4,
     position: "relative",
-    paddingX: 20,
-    paddingY: 16,
+    padding: "16px 20px 8px",
     border: "none",
-    height: 50,
+    height: 55,
     lineHeight: 50,
     fontSize: 16,
     outline: "none",
