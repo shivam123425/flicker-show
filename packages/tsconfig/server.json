@@ -3,10 +3,11 @@
   "display": "Server",
   "extends": "./base.json",
   "compilerOptions": {
-    "module": "commonjs",
+    "module": "es2020",
     "noEmit": true,
-    "target": "ES2017",
-    "lib": ["ES2017"],
+    "target": "esnext",
+    "lib": ["esnext"],
+    "types": ["vite/client"],
     "allowJs": true,
     "declaration": false,
     "declarationMap": false

@@ -4,7 +4,11 @@ import "express-async-errors";
 import helmet from "helmet";
 import cors from "cors";
 import cookieSession from "cookie-session";
-import { errorHandler, NotFoundError, currentUser } from "@shivam123425/express-common";
+import {
+  errorHandler,
+  NotFoundError,
+  currentUser,
+} from "@shivam123425/express-common";
 
 import { initialiseDB } from "./config/db";
 import { initialiseRedis } from "./config/redis";
@@ -51,11 +55,12 @@ app.use(errorHandler);
 const start = async () => {
   await initialiseDB();
   await initialiseRedis();
-
-  const PORT = process.env.PORT;
+  const PORT = 4000;
   app.listen(PORT, () => {
     console.log("CMS backend server is running at", PORT);
   });
 };
 
 start();
+
+export const viteNodeApp = app;
