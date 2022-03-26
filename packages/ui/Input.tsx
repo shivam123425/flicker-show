@@ -1,58 +1,93 @@
 import { CSS } from "@stitches/react";
 import React, { useRef, useState } from "react";
+import { useImperativeHandle } from "react";
 import { Box } from "./Box";
+import { ErrorText } from "./ErrorText";
 import { InputField } from "./InputField";
+import { styled } from "./stitches.config";
 
 interface Props extends React.ComponentProps<typeof InputField> {
   label: string;
   id: string;
+  error?: string | boolean;
 }
 
-export function Input(props: Props) {
-  const { label, block, id } = props;
-  const ref = useRef<HTMLInputElement>(null);
-  const [focused, setFocused] = useState(false);
+export const Input = React.forwardRef(
+  (props: Props, ref: React.ForwardedRef<HTMLInputElement>) => {
+    const { label, block, id, error } = props;
+    const inputRef = useRef<HTMLInputElement>(null);
+    const [focused, setFocused] = useState(false);
 
-  function handleFocus(e: React.FocusEvent<HTMLInputElement>) {
-    setFocused(true);
-  }
-  function handleBlur(e: React.FocusEvent<HTMLInputElement>) {
-    setFocused(false);
-  }
+    useImperativeHandle(ref, () => inputRef.current as HTMLInputElement);
 
-  const value = ref.current?.value;
+    function handleFocus(e: React.FocusEvent<HTMLInputElement>) {
+      setFocused(true);
+    }
+    function handleBlur(e: React.FocusEvent<HTMLInputElement>) {
+      setFocused(false);
+    }
 
-  return (
-    <Box
-      css={{
-        position: "relative",
-        display: block ? "block" : "inline-block",
-        height: "auto",
-        color: "$grayMedium",
-      }}
-    >
-      <InputField
-        {...props}
-        ref={ref}
-        id={id}
-        onFocus={handleFocus}
-        onBlur={handleBlur}
-      />
+    const value = inputRef.current?.value;
+    const hasError = !!error;
+
+    return (
       <Box
-        as="label"
         css={{
-          fontSize: 16,
-          position: "absolute",
-          transition: "left 0.3s, top 0.3s, font-size 0.1s",
-          ...getLabelPosition(focused || !!value),
+          position: "relative",
+          display: block ? "block" : "inline-block",
+          height: "auto",
+          color: "$grayMedium",
         }}
-        htmlFor={id}
       >
-        {label}
+        <InputFieldContainer hasError={hasError}>
+          <InputField
+            {...props}
+            ref={inputRef}
+            id={id}
+            onFocus={handleFocus}
+            onBlur={handleBlur}
+          />
+
+          <Box
+            as="label"
+            css={{
+              fontSize: 16,
+              position: "absolute",
+              transition: "left 0.3s, top 0.3s, font-size 0.1s",
+              ...getLabelPosition(focused || !!value),
+            }}
+            htmlFor={id}
+          >
+            {label}
+          </Box>
+        </InputFieldContainer>
+        {hasError && <ErrorText>{error}</ErrorText>}
       </Box>
-    </Box>
-  );
-}
+    );
+  }
+);
+
+const InputFieldContainer = styled(Box, {
+  position: "relative",
+  variants: {
+    hasError: {
+      true: {
+        "&::after": {
+          content: "",
+          borderBottom: "2px solid $secondary",
+          position: "absolute",
+          bottom: 0,
+          left: 0,
+          height: 6,
+          width: "100%",
+          borderBottomLeftRadius: 4,
+          borderBottomRightRadius: 4,
+          pointerEvents: "none",
+        },
+      },
+    },
+  },
+});
 
 function getLabelPosition(active: boolean) {
   const styles: CSS = {

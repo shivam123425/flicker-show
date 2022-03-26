@@ -18,7 +18,6 @@ export const InputField = styled("input", {
       true: {
         width: "100%",
         display: "block",
-        marginY: 12,
       },
     },
   },

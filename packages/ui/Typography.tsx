@@ -10,5 +10,10 @@ export const Typography = styled("h1", {
         marginBottom: 28,
       },
     },
+    gutterTop: {
+      true: {
+        marginTop: 28,
+      },
+    },
   },
 });
