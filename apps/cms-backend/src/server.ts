@@ -16,7 +16,7 @@ import { initialiseRedis } from "./config/redis";
 import showRoutes from "@routes/show";
 import userRoutes from "@routes/user";
 
-const isNonProdEnv = process.env.NODE_ENV !== "production";
+const isProdEnv = import.meta.env.PROD;
 
 const app = express();
 app.use(helmet());
@@ -24,10 +24,10 @@ app.use(helmet());
 app.use(
   cors({
     origin: function (origin, callback) {
-      if (isNonProdEnv) {
-        return callback(null, true);
+      if (isProdEnv) {
+        return callback(new Error("Not allowed by CORS"));
       }
-      return callback(new Error("Not allowed by CORS"));
+      return callback(null, true);
     },
   })
 );
@@ -52,15 +52,17 @@ app.all("*", () => {
 
 app.use(errorHandler);
 
-const start = async () => {
+(async () => {
   await initialiseDB();
   await initialiseRedis();
-  const PORT = 4000;
+})();
+
+if (import.meta.env.PROD) {
+  const PORT = process.env.PORT;
+
   app.listen(PORT, () => {
     console.log("CMS backend server is running at", PORT);
   });
-};
-
-start();
+}
 
 export const viteNodeApp = app;

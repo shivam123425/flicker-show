@@ -37,10 +37,10 @@ router.post(
   loginUser
 );
 
-// @route    POST /user/currentuser
-// @desc     Login a user by email and password
+// @route    GET /user/currentuser
+// @desc     Get logged in user's details
 // @access   Public
-router.post("/currentuser", requireAuth, getCurrentUser);
+router.get("/currentuser", requireAuth, getCurrentUser);
 
 // @route    POST /user/logout
 // @desc     Logout a user
