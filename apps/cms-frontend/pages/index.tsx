@@ -1,11 +1,10 @@
 import { Button } from "ui";
-import { Auth } from "@components/Auth";
 
 export default function CMSFrontend() {
   return (
     <div>
       <h1>
-        <Auth />
+        Index page
       </h1>
       <Button />
     </div>
