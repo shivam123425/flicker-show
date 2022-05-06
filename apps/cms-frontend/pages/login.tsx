@@ -1,5 +1,5 @@
-import { Auth } from "@components/Auth";
 import { Container } from "ui";
+import { Login as LoginComponent } from "ui";
 
 export default function Login() {
   return (
@@ -11,11 +11,11 @@ export default function Login() {
           height: "660px",
           "@sm": {
             width: "100vw",
-            height: "100vh"
-          }
+            height: "100vh",
+          },
         }}
       >
-        <Auth />
+        <LoginComponent />
       </Container>
     </Container>
   );

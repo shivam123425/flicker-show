@@ -1,4 +1,4 @@
-import { styled } from "./stitches.config";
+import { styled } from "../stitches.config";
 
 export const InputField = styled("input", {
   "&[type=text],&[type=password],&[type=email]": {

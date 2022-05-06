@@ -4,7 +4,7 @@ import { useImperativeHandle } from "react";
 import { Box } from "./Box";
 import { ErrorText } from "./ErrorText";
 import { InputField } from "./InputField";
-import { styled } from "./stitches.config";
+import { styled } from "../stitches.config";
 
 interface Props extends React.ComponentProps<typeof InputField> {
   label: string;

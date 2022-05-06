@@ -1,9 +1,9 @@
-import { Box, Typography, Input, Button } from "ui";
+import { Box, Typography, Input, Button } from "../index";
 import { useForm } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
 import * as Yup from "yup";
 
-export function Auth() {
+export function Login() {
   const {
     register,
     handleSubmit,
@@ -16,7 +16,7 @@ export function Auth() {
     },
   });
 
-  const onSubmit = (data) => console.log(data);
+  const onSubmit = (data: any) => console.log(data);
 
   return (
     <Box
